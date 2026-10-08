@@ -1,0 +1,4 @@
+interface:
+  display_name: "Share AI Transcripts"
+  short_description: "Review and selectively export local AI sessions"
+  default_prompt: "Use $share-ai-transcripts to prepare a local review of my specified Claude Code or Codex JSONL file."

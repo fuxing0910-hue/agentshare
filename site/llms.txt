@@ -1,0 +1,14 @@
+# AgentShare
+
+> Local review and selective HTML/Markdown export for explicitly supplied Claude Code or Codex JSONL transcripts. Common pattern redaction; tool bodies omitted; nothing selected initially. Manual review is required before sharing.
+
+## Documentation
+
+- [Project](https://fuxing0910-hue.github.io/agentshare/): English overview and runnable synthetic demo.
+- [中文介绍](https://fuxing0910-hue.github.io/agentshare/zh.html): Chinese overview.
+- [Agent integration](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/agents.md): portable Skill, CLI and local function dispatcher; OpenAI Responses, DeepSeek Chat Completions, Claude Messages, Gemini Interactions declaration formats.
+- [Skill](https://github.com/fuxing0910-hue/agentshare/blob/main/skills/share-ai-transcripts/SKILL.md): installed-agent routing and bundled standalone runner.
+- [Technical reference](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/reference.md): supported inputs, local processing and privacy limitations.
+- [Releases](https://github.com/fuxing0910-hue/agentshare/releases): versioned wheel and portable skill assets.
+
+This is a documentation index. Tool use requires an installed skill, local runtime or an API application that registers the function declarations. It does not register tools in public chat applications.

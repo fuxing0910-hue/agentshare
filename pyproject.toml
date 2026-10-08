@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agentshare"
-version = "0.1.0"
+version = "0.2.0"
 description = "Review and selectively export AI coding transcripts locally."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [{name = "Fu Xing"}]
 dependencies = []
+keywords = ["agent-skills", "transcript", "redaction", "claude-code", "codex", "function-calling"]
 
 [project.scripts]
 agentshare = "agentshare.__main__:main"

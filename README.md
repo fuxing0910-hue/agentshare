@@ -4,17 +4,23 @@
 
 **Share the useful part of an AI coding session. Review what leaves your machine.**
 
-[![Tests](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml/badge.svg)](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml)
+You want to show a teammate a failed test and the explanation that fixed it. Your Claude Code or Codex transcript also contains credentials, local paths, and a long tool output. AgentShare builds a local review page: edit the remaining text, select the relevant messages, then export a focused HTML or Markdown file.
 
-[Online demo](https://fuxing0910-hue.github.io/agentshare/) · [Synthetic interactive demo](https://fuxing0910-hue.github.io/agentshare/demo.html) · [Download the standalone synthetic demo](https://github.com/fuxing0910-hue/agentshare/releases/download/v0.1.0/agentshare-demo.html) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
+**[Try the interactive demo →](https://fuxing0910-hue.github.io/agentshare/demo.html)** · [Project site](https://fuxing0910-hue.github.io/agentshare/) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
 
-AgentShare turns a local Claude Code or Codex JSONL transcript into an offline review page. It removes tool arguments and output bodies, applies visible redaction rules, and lets you edit and select messages before exporting a small HTML or Markdown evidence packet.
+The demo is entirely synthetic. It opens the complete review interface, with nothing selected.
 
-No account, model API, server, or runtime dependencies. Processing stays on your computer.
+- **Choose what to share.** Nothing is selected by default; exports contain only selected, edited messages.
+- **Reduce noisy context.** Tool arguments and output bodies are omitted; visible rules replace common credential, email, and home-path patterns.
+- **Keep processing local.** Python standard library, standalone review page, no model API or third-party runtime dependencies.
 
-## Try the synthetic demo
+**Review before sharing:** rules cannot find every secret. Keep the initial candidate review private and inspect your final selection.
 
-Try the [synthetic interactive demo](https://fuxing0910-hue.github.io/agentshare/demo.html) in your browser, or generate an offline copy:
+![AgentShare review workspace: transformation counts, editable messages, and selected-only export](docs/images/demo-preview.jpg)
+
+## Run it locally
+
+Requires Python 3.10+.
 
 ```sh
 git clone https://github.com/fuxing0910-hue/agentshare.git
@@ -22,52 +28,57 @@ cd agentshare
 python -m agentshare demo --output demo-review.html
 ```
 
-Open `demo-review.html` in a browser. Select a few events, edit their text, and export Markdown or HTML. The demo uses invented conversation data and deliberately fake secret strings; it is not a real user's transcript.
-
-Python 3.10 or newer is required. You can also install the CLI with `python -m pip install .` and use `agentshare` instead of `python -m agentshare`.
-
-## Review your own transcript
+Open `demo-review.html`, choose messages, edit their text, and download HTML or Markdown. To process your own explicitly selected file:
 
 ```sh
-python -m agentshare build session.jsonl --output review.html
 python -m agentshare build session.jsonl --format codex --output review.html
 python -m agentshare build session.jsonl --term-file private-terms.txt --output review.html
 ```
 
-The term file contains one literal phrase per line, such as a company name or internal identifier. Keep it private. The CLI reads only the input you specify; it does not search your session folders, run recorded commands, or upload anything.
+`--format` accepts `auto`, `claude`, or `codex`; the default is `auto`. A private term file lists one literal phrase per line. Install with `python -m pip install .` to use the `agentshare` command.
 
-The review page starts with **nothing selected**. Read the candidate messages, edit anything the rules missed, then choose the evidence to share. The exported document contains only selected, edited events. Excluded messages and the original transcript are not embedded in the exported file.
+## Let a coding agent use it
 
-## What is preserved
+Ask a compatible agent:
 
-| Input | Review output |
-| --- | --- |
-| User and assistant text | Text after rule-based replacements; editable before export |
-| Tool calls and results | Tool labels and status only |
-| Tool arguments and output bodies | Omitted |
-| Session metadata and unknown records | Excluded; unsupported records counted |
-| Original source transcript | Never attached to generated output |
+> Turn this Codex JSONL into shareable review material. Remove common credential patterns and tool output, then leave the candidate page for my manual review.
 
-Common credential formats, secret assignments, email addresses, home-directory paths, and your custom literal terms have dedicated replacement rules. Counts show what the rules changed. Text is rendered as text, so transcript HTML and code do not execute in the review page.
+There are four entry points:
 
-## Limits that matter
+- **CLI:** `python -m agentshare build …` for local file-to-review tasks.
+- **Python API:** `build_bundle()` plus `render_review()` for integrations.
+- **Function tools:** declaration exports for GPT, DeepSeek, Claude and Gemini API applications, with one validated local dispatcher.
+- **Installable skill:** [share-ai-transcripts](skills/share-ai-transcripts/SKILL.md), task instructions that help an agent match a natural-language request to the local workflow.
 
-Redaction rules do not understand every secret, proprietary passage, or personal detail. **Review the final selection before sharing.** The initial review page contains candidate messages and should be kept private. Automatic replacements are an aid to review, not a guarantee that a document is safe to disclose.
+Install the skill directly from this repository:
 
-The adapters support the documented shapes in [formats.md](docs/formats.md); upstream transcript formats can change. This is a transcript evidence exporter, not a command execution replay system. Unsupported events are reported rather than presented as a complete reconstruction.
+```sh
+npx skills add fuxing0910-hue/agentshare --skill share-ai-transcripts
+```
 
-## Development
+The Skills CLI discovers and installs instructions from the specified repository. Node.js is needed only for that optional installer; the skill's commands run on Python 3.10+. This direct-install command does not depend on a directory listing or ranking.
+
+For executable routing, supported inputs, and installation choices, see [the agent integration guide](docs/agents.md). A Python integration can build the same review:
+
+```python
+from pathlib import Path
+from agentshare import build_bundle
+from agentshare.report import render_review
+
+bundle = build_bundle("session.jsonl", format="codex", terms=["internal-project"])
+Path("review.html").write_text(render_review(bundle), encoding="utf-8")
+```
+
+The AI-assisted workflow prepares review material. Message selection, final inspection, and sharing remain deliberate steps.
+
+## Support and boundaries
+
+The adapters support documented Claude Code and Codex JSONL shapes. Unknown records are counted; upstream formats can change. Automatic replacements miss contextual secrets and proprietary text. The initial review contains all candidates and is different from a selected export.
+
+[Complete technical reference](docs/reference.md) · [Supported transcript formats](docs/formats.md) · [Contributing](CONTRIBUTING.md) · [MIT License](LICENSE)
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-Tests cover redaction, malformed input, event normalization, omitted tool bodies, and safe HTML serialization. The implementation uses the Python standard library and standalone HTML/JavaScript.
-
-## Context and contribution
-
-The product focuses on a concrete [request for local transcript redaction and review](https://github.com/anthropics/claude-code/issues/57772). Existing projects such as [claude-code-transcripts](https://github.com/simonw/claude-code-transcripts) provide broader transcript publishing workflows. AgentShare is an original, smaller implementation focused on selective evidence export; it does not contain their code.
-
-Useful contributions include small synthetic format fixtures, regression tests for replacement rules, and accessibility improvements. See [CONTRIBUTING.md](CONTRIBUTING.md) for a concise bug-report and contribution guide. Please avoid posting real transcripts, keys, or private term lists in issues.
-
-Developed with AI assistance. MIT licensed.
+Developed with AI assistance. Original implementation; see the reference for project context and detailed limitations.
