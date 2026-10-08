@@ -2,6 +2,10 @@
 
 **Share the useful part of an AI coding session. Review what leaves your machine.**
 
+[![Tests](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml/badge.svg)](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml)
+
+[Download the standalone synthetic demo](https://github.com/fuxing0910-hue/agentshare/releases/download/v0.1.0/agentshare-demo.html) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
+
 AgentShare turns a local Claude Code or Codex JSONL transcript into an offline review page. It removes tool arguments and output bodies, applies visible redaction rules, and lets you edit and select messages before exporting a small HTML or Markdown evidence packet.
 
 No account, model API, server, or runtime dependencies. Processing stays on your computer.
@@ -68,4 +72,4 @@ The product focuses on a concrete [request for local transcript redaction and re
 
 Useful contributions include small synthetic format fixtures, regression tests for replacement rules, and accessibility improvements. Please avoid posting real transcripts, keys, or private term lists in issues.
 
-MIT licensed.
+Developed with AI assistance. MIT licensed.
