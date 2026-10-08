@@ -1,16 +1,20 @@
 # AgentShare
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 **Share the useful part of an AI coding session. Review what leaves your machine.**
 
 [![Tests](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml/badge.svg)](https://github.com/fuxing0910-hue/agentshare/actions/workflows/test.yml)
 
-[Download the standalone synthetic demo](https://github.com/fuxing0910-hue/agentshare/releases/download/v0.1.0/agentshare-demo.html) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
+[Online demo](https://fuxing0910-hue.github.io/agentshare/) · [Synthetic interactive demo](https://fuxing0910-hue.github.io/agentshare/demo.html) · [Download the standalone synthetic demo](https://github.com/fuxing0910-hue/agentshare/releases/download/v0.1.0/agentshare-demo.html) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
 
 AgentShare turns a local Claude Code or Codex JSONL transcript into an offline review page. It removes tool arguments and output bodies, applies visible redaction rules, and lets you edit and select messages before exporting a small HTML or Markdown evidence packet.
 
 No account, model API, server, or runtime dependencies. Processing stays on your computer.
 
 ## Try the synthetic demo
+
+Try the [synthetic interactive demo](https://fuxing0910-hue.github.io/agentshare/demo.html) in your browser, or generate an offline copy:
 
 ```sh
 git clone https://github.com/fuxing0910-hue/agentshare.git
@@ -60,16 +64,10 @@ python -m unittest discover -s tests -v
 
 Tests cover redaction, malformed input, event normalization, omitted tool bodies, and safe HTML serialization. The implementation uses the Python standard library and standalone HTML/JavaScript.
 
-## 中文快速开始
-
-这个工具把 AI 编程会话整理成可审阅的分享材料。先在本地替换常见敏感信息，省略工具参数与完整输出，再逐条选择、编辑，导出独立 HTML 或 Markdown。无需 API Key。
-
-先运行上面的 `demo` 命令体验，再用 `build` 处理自己明确指定的 JSONL 文件。自动规则无法识别所有敏感内容，分享前请检查最终选中的文字。演示数据全部为虚构。
-
 ## Context and contribution
 
 The product focuses on a concrete [request for local transcript redaction and review](https://github.com/anthropics/claude-code/issues/57772). Existing projects such as [claude-code-transcripts](https://github.com/simonw/claude-code-transcripts) provide broader transcript publishing workflows. AgentShare is an original, smaller implementation focused on selective evidence export; it does not contain their code.
 
-Useful contributions include small synthetic format fixtures, regression tests for replacement rules, and accessibility improvements. Please avoid posting real transcripts, keys, or private term lists in issues.
+Useful contributions include small synthetic format fixtures, regression tests for replacement rules, and accessibility improvements. See [CONTRIBUTING.md](CONTRIBUTING.md) for a concise bug-report and contribution guide. Please avoid posting real transcripts, keys, or private term lists in issues.
 
 Developed with AI assistance. MIT licensed.
