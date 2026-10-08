@@ -1,0 +1,5 @@
+{"type":"system","sessionId":"synthetic-session-only","cwd":"C:\\Users\\demo\\private-project"}
+{"type":"user","message":{"role":"user","content":"Synthetic demo: please inspect this failed test. Contact demo@example.test.\nFake token ghp_FAKE_DEMO_NOT_A_REAL_TOKEN.\nLocal path C:\\Users\\demo\\private-project\\test.py"}}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"I will inspect the failure; tool arguments and output will be omitted from this review."},{"type":"tool_use","id":"synthetic-tool-1","name":"Bash","input":{"command":"echo FAKE_TOOL_INPUT_ONLY"}}]}}
+{"type":"user","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"synthetic-tool-1","is_error":true,"content":"FAKE_TOOL_OUTPUT_ONLY: API_KEY=FAKE_PRIVATE_VALUE"}]}}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"The tool reported an error. This export intentionally omits the output body; add a manually reviewed description before sharing."}]}}

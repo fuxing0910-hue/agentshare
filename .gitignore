@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.env
+.env.*
+*.jsonl
+!examples/demo-*.jsonl
+review.html
+*-review.html
+!examples/demo-review.html
+private/

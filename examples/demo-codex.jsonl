@@ -1,0 +1,8 @@
+{"timestamp":"2026-01-01T00:00:00Z","type":"session_meta","payload":{"id":"synthetic-codex-session","cwd":"/home/demo/private-project","model":"synthetic-model"}}
+{"type":"event_msg","payload":{"type":"user_message","message":"Synthetic Codex demo: inspect the failing test.\nFake secret sk-proj-FAKE_NOT_A_REAL_SECRET.\nContact demo@example.test."}}
+{"type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"Synthetic Codex demo: inspect the failing test.\nFake secret sk-proj-FAKE_NOT_A_REAL_SECRET.\nContact demo@example.test."}]}}
+{"type":"response_item","payload":{"type":"message","role":"assistant","content":[{"type":"output_text","text":"I will inspect the test. Tool arguments and result bodies will be omitted."}]}}
+{"type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"echo FAKE_TOOL_INPUT_ONLY\"}","call_id":"synthetic-call-1"}}
+{"type":"response_item","payload":{"type":"function_call_output","call_id":"synthetic-call-1","output":"FAKE_TOOL_OUTPUT_ONLY: error, exit_code=1, API_KEY=FAKE_PRIVATE_VALUE"}}
+{"type":"response_item","payload":{"type":"message","role":"assistant","content":[{"type":"output_text","text":"The omitted result body is not enough for a reader to infer success. Add a manually reviewed failure description before sharing.\nLocal path /home/demo/private-project/test.py"}]}}
+{"type":"event_msg","payload":{"type":"agent_message","message":"The omitted result body is not enough for a reader to infer success. Add a manually reviewed failure description before sharing.\nLocal path /home/demo/private-project/test.py"}}
