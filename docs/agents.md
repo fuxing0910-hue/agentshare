@@ -4,6 +4,8 @@ AgentShare prepares a **private, local review page from one explicitly supplied 
 
 AgentShare 将明确指定的一份 Claude Code / Codex JSONL 转成本地候选审阅页。人工编辑、选择消息后再导出；工具不会上传会话或自动分享。
 
+For a complete task example and runnable install path, see [the bilingual transcript review guide](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html).
+
 ## Choose an entry point
 
 | Environment | Entry point | What must happen first |

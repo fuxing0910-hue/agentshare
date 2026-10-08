@@ -8,6 +8,8 @@ You want to show a teammate a failed test and the explanation that fixed it. You
 
 **[Try the interactive demo →](https://fuxing0910-hue.github.io/agentshare/demo.html)** · [Project site](https://fuxing0910-hue.github.io/agentshare/) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
 
+[How to redact and selectively export a Claude Code/Codex transcript](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html) — offline JSONL review, editable messages, HTML/Markdown export, and agent installation.
+
 The demo is entirely synthetic. It opens the complete review interface, with nothing selected.
 
 - **Choose what to share.** Nothing is selected by default; exports contain only selected, edited messages.

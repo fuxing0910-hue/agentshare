@@ -6,6 +6,7 @@
 
 - [Project](https://fuxing0910-hue.github.io/agentshare/): English overview and runnable synthetic demo.
 - [中文介绍](https://fuxing0910-hue.github.io/agentshare/zh.html): Chinese overview.
+- [Redact and export a Claude Code/Codex transcript](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html): bilingual task guide with offline review, edit/select, HTML/Markdown export and install commands.
 - [Agent integration](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/agents.md): portable Skill, CLI and local function dispatcher; OpenAI Responses, DeepSeek Chat Completions, Claude Messages, Gemini Interactions declaration formats.
 - [Skill](https://github.com/fuxing0910-hue/agentshare/blob/main/skills/share-ai-transcripts/SKILL.md): installed-agent routing and bundled standalone runner.
 - [Technical reference](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/reference.md): supported inputs, local processing and privacy limitations.

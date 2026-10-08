@@ -10,5 +10,6 @@ dist/
 !examples/demo-*.jsonl
 /review.html
 *-review.html
+!site/claude-code-transcript-review.html
 !examples/demo-review.html
 private/

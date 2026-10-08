@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'none'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Claude Code transcript viewer: redact, edit and export JSONL locally | AgentShare</title>
+  <meta name="description" content="Review a Claude Code or Codex JSONL session locally. Replace common sensitive patterns, edit and select messages, then export standalone HTML or Markdown with AgentShare.">
+  <link rel="canonical" href="https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html">
+  <link rel="stylesheet" href="task-guide.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Review and share a Claude Code transcript locally">
+  <meta property="og:description" content="A practical JSONL-to-HTML review workflow: replace common sensitive patterns, edit messages and export only the selection. Python 3.10+, no uploads.">
+  <meta property="og:url" content="https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html">
+  <meta name="theme-color" content="#f5f8f7">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://fuxing0910-hue.github.io/agentshare/#software",
+        "name": "AgentShare",
+        "url": "https://fuxing0910-hue.github.io/agentshare/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "softwareRequirements": "Python 3.10 or later; a browser for local review and export",
+        "license": "https://github.com/fuxing0910-hue/agentshare/blob/main/LICENSE",
+        "downloadUrl": "https://github.com/fuxing0910-hue/agentshare/releases",
+        "description": "A local Claude Code and Codex JSONL transcript review tool. Replace common sensitive patterns, edit and select messages, then export selected content as standalone HTML or Markdown."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html#faq",
+        "mainEntity": [
+          {"@type":"Question","name":"How can I share only part of a Claude Code conversation?","acceptedAnswer":{"@type":"Answer","text":"Build a local review page from the specified JSONL file. Open it in a browser, edit the candidate text and select the messages to include. Export a new HTML or Markdown file. Nothing is selected initially, and excluded messages are not embedded in the selected export."}},
+          {"@type":"Question","name":"Can AgentShare remove API keys, emails and private paths automatically?","acceptedAnswer":{"@type":"Answer","text":"It applies rules for common credential, email and home-path patterns. A private UTF-8 term file can add case-sensitive literal replacements. Rules cannot find every secret or proprietary passage; inspect and edit the candidate review and final export before sharing."}},
+          {"@type":"Question","name":"Is the initial review.html ready to publish?","acceptedAnswer":{"@type":"Answer","text":"No. The initial review contains all supported candidate events after replacements and should stay private. Only the newly exported file contains the selected, edited events. Inspect that final file before sharing it yourself."}},
+          {"@type":"Question","name":"Does this also work with Codex transcripts or every JSONL file?","acceptedAnswer":{"@type":"Answer","text":"AgentShare supports documented Claude Code and Codex JSONL record shapes. Unknown records are omitted and counted; invalid JSONL fails the build. This is not a general JSONL viewer or a promise of compatibility with every past or future transcript version."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <header>
+      <a class="brand" href="./">AgentShare</a>
+      <nav aria-label="Guide navigation"><a href="#quick-start">Run locally</a><a href="#chinese" lang="zh-CN">中文指南</a><a href="https://github.com/fuxing0910-hue/agentshare">GitHub</a></nav>
+    </header>
+    <main id="main">
+      <section class="hero">
+        <p class="eyebrow">Claude Code + Codex · JSONL transcript review</p>
+        <h1>Review a Claude Code transcript.<br>Share the messages you choose.</h1>
+        <p class="lede">Need to turn an AI coding conversation into a bug report, pull-request explanation or portfolio example? AgentShare creates a local HTML viewer for a specified JSONL file. Review sensitive-text replacements, edit messages and export a focused selection as HTML or Markdown.</p>
+        <div class="actions"><a class="button primary" href="demo.html">Try the synthetic review</a><a class="button" href="#quick-start">Use your local transcript</a></div>
+        <p class="meta">Python 3.10+ · MIT licensed · No model API, account or uploads · Browser review after processing</p>
+      </section>
+      <div class="facts">
+        <article class="fact"><h2>View locally</h2><p>Read one explicit Claude Code or Codex JSONL file. Tool argument and output bodies are omitted; useful user and assistant text becomes reviewable.</p></article>
+        <article class="fact"><h2>Edit and select</h2><p>Nothing is selected by default. Search the candidates, change their text and choose what to include in the exported document.</p></article>
+        <article class="fact"><h2>Export a file</h2><p>The new standalone HTML or Markdown contains your selected, edited events. The browser export does not upload them.</p></article>
+      </div>
+      <section class="section" id="quick-start">
+        <h2>Turn a local Claude Code JSONL file into a review page</h2>
+        <p>Use an existing transcript you have explicitly chosen. These commands clone the source and run it without installing a Python package:</p>
+        <pre><code>git clone https://github.com/fuxing0910-hue/agentshare.git
+cd agentshare
+python -m agentshare build session.jsonl --format claude --output review.html</code></pre>
+        <p>Replace <code>session.jsonl</code> with your input path. Open <code>review.html</code> locally, inspect and edit messages, then select them and use <strong>Export Markdown</strong> or <strong>Export HTML</strong>. Inspect the downloaded file before sharing it yourself.</p>
+        <p>For Codex, use <code>--format codex</code>; the default <code>--format auto</code> accepts supported records from either adapter. To try the workflow first with invented data:</p>
+        <pre><code>python -m agentshare demo --output demo-review.html</code></pre>
+        <h3>Add your own literal replacements</h3>
+        <p>Put one private, case-sensitive literal phrase per line in a local UTF-8 file. Keep that file private and use:</p>
+        <pre><code>python -m agentshare build session.jsonl --output review.html --term-file private-terms.txt</code></pre>
+        <div class="callout"><p><strong>The review page is a private intermediate file.</strong> Common-pattern replacements are best effort. They do not certify that the candidate text or export is safe to disclose.</p></div>
+      </section>
+      <section class="section" id="agent-use">
+        <h2>Use this workflow from a coding agent</h2>
+        <p>An agent with a shell can run the CLI above. A coding agent that supports Agent Skills can install the bundled workflow into the current project with the optional Skills CLI:</p>
+        <pre><code>npx skills add fuxing0910-hue/agentshare --skill share-ai-transcripts</code></pre>
+        <p class="note">Node.js is required for this installer. The installed skill includes its Python source and template; running it requires Python 3.10+, without pip or a repository checkout.</p>
+        <p>A task you can give after installation:</p>
+        <div class="callout"><p>“Prepare a local review of this Claude Code JSONL file. Replace common sensitive text, let me edit and select messages, and export my selection as Markdown.”</p></div>
+        <p>The agent prepares the candidate page; browser review and the final sharing decision remain deliberate steps. See the <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/skills/share-ai-transcripts/SKILL.md">skill instructions</a> or <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/docs/agents.md">CLI, Python and function-tool integration guide</a>. A public repository alone does not add this tool to every chat application.</p>
+      </section>
+      <section class="section" id="faq">
+        <h2>Common transcript-sharing questions</h2>
+        <article class="faq"><h3>How can I share only part of a Claude Code conversation?</h3><p>Build a local review page from the specified JSONL file. Open it in a browser, edit the candidate text and select the messages to include. Export a new HTML or Markdown file. Nothing is selected initially, and excluded messages are not embedded in the selected export.</p></article>
+        <article class="faq"><h3>Can AgentShare remove API keys, emails and private paths automatically?</h3><p>It applies rules for common credential, email and home-path patterns. A private UTF-8 term file can add case-sensitive literal replacements. Rules cannot find every secret or proprietary passage; inspect and edit the candidate review and final export before sharing.</p></article>
+        <article class="faq"><h3>Is the initial review.html ready to publish?</h3><p>No. The initial review contains all supported candidate events after replacements and should stay private. Only the newly exported file contains the selected, edited events. Inspect that final file before sharing it yourself.</p></article>
+        <article class="faq"><h3>Does this also work with Codex transcripts or every JSONL file?</h3><p>AgentShare supports documented Claude Code and Codex JSONL record shapes. Unknown records are omitted and counted; invalid JSONL fails the build. This is not a general JSONL viewer or a promise of compatibility with every past or future transcript version.</p></article>
+        <p class="note">Input limits: UTF-8 JSONL, up to 20 MiB; visible user or assistant messages above 100,000 characters fail the build. Thinking, images and source metadata are omitted. See <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/docs/formats.md">supported record shapes</a> and the <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/docs/reference.md">technical reference</a>.</p>
+      </section>
+      <section class="chinese" id="chinese" lang="zh-CN" aria-labelledby="chinese-title">
+        <h2 id="chinese-title">如何把 Claude Code 会话脱敏、精选并导出？</h2>
+        <p>如果你需要把 Claude Code 或 Codex 的 JSONL 会话用于问题反馈、PR 说明或求职项目展示，AgentShare 可以先生成本地审阅页面。常见敏感模式会被替换；你逐条检查、修改文字并选择消息，最终导出新的 HTML 或 Markdown。</p>
+        <h3>在本地运行</h3>
+        <pre><code>git clone https://github.com/fuxing0910-hue/agentshare.git
+cd agentshare
+python -m agentshare build session.jsonl --format claude --output review.html</code></pre>
+        <p>把输入路径替换为你明确选定的会话文件，然后在浏览器打开 <code>review.html</code>。初始状态不会选中任何消息。编辑并选择后，点击 HTML 或 Markdown 导出按钮，再检查下载的最终文件。</p>
+        <h3>让支持 Skill 的编程代理使用</h3>
+        <pre><code>npx skills add fuxing0910-hue/agentshare --skill share-ai-transcripts</code></pre>
+        <p>安装器需要 Node.js，Skill 本身运行只需要 Python 3.10+。安装后可描述需求：“请把这个 Claude Code JSONL 会话整理成可编辑、可精选的本地审阅页，替换常见敏感内容，之后让我导出 Markdown。”</p>
+        <h3>初始审阅页可以直接公开吗？</h3>
+        <p>不要直接公开。初始页面含全部支持的候选消息，应留在本地；新导出文件才只包含选中且编辑后的内容。自动规则无法识别全部密钥、隐私或内部文字，分享前仍需人工检查。</p>
+        <h3>支持哪些格式？</h3>
+        <p>支持文档说明的 Claude Code 与 Codex JSONL 记录形状，未知记录会省略并计数；无效 JSONL 会终止生成。不处理任意 JSONL，不重放命令，也不自动搜索会话目录或上传文件。可用 <code>--term-file private-terms.txt</code> 追加自定义字面替换，每行一个，区分大小写。</p>
+        <p><a href="demo.html">打开合成数据演示</a> · <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/README.zh-CN.md">完整中文文档</a></p>
+      </section>
+    </main>
+    <footer><span>AgentShare · Original implementation · MIT · Developed with AI assistance</span><div><a href="./">Project home</a><a href="demo.html">Synthetic demo</a><a href="https://github.com/fuxing0910-hue/agentshare/releases">Releases</a></div></footer>
+  </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 name: share-ai-transcripts
-description: "Prepare a local, redacted review of a user-specified Claude Code or Codex JSONL transcript for selective HTML/Markdown sharing. 将指定 AI 编程会话脱敏、审阅并精选导出；不自动扫描或上传。"
+description: "Offline Claude Code/Codex JSONL transcript viewer and exporter: redact common secrets, review and edit messages, then select HTML/Markdown exports. 将指定 AI 编程会话脱敏、审阅并精选导出；不自动扫描或上传。"
 ---
 
 # Share AI Transcripts

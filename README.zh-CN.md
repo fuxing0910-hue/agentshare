@@ -8,6 +8,8 @@
 
 **[直接体验完整演示 →](https://fuxing0910-hue.github.io/agentshare/demo.html)** · [中文项目页](https://fuxing0910-hue.github.io/agentshare/zh.html) · [发布版本](https://github.com/fuxing0910-hue/agentshare/releases)
 
+[Claude Code / Codex 会话如何本地脱敏、编辑并精选导出？](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html) 包含可复现命令与 AI 工具安装入口。
+
 演示数据全部为虚构，打开后默认不选中任何消息。
 
 - **你决定分享范围。** 初始状态不选中任何消息，导出文件只含选中并编辑后的内容。
