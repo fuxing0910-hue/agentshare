@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>AgentShare · local review</title>
+<style>
+:root{color-scheme:light;--ink:#1c2c36;--muted:#61727a;--line:#dce5e5;--paper:#fff;--canvas:#f4f7f7;--mint:#d8f2e8;--green:#14674f;--red:#a43c3c;--radius:14px}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.46}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #7ac7b0;outline-offset:3px}button{border:1px solid var(--line);border-radius:9px;background:white;padding:9px 14px;color:var(--ink);font-size:13px;font-weight:650}button:hover:enabled{background:#edf5f2;border-color:#b1cfc4}button.primary{background:var(--green);border-color:var(--green);color:#fff}button.primary:hover:enabled{background:#0d513d}.page{max-width:1280px;margin:auto;padding:0 40px 40px}.topbar{height:89px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-weight:760;letter-spacing:-.8px;font-size:23px;display:flex;gap:11px;align-items:center}.brand-icon{width:32px;height:32px;border:1px solid #a8d1c2;border-radius:10px;display:grid;place-items:center;background:var(--mint);color:var(--green);font:22px/1 Georgia,serif}.pill{border:1px solid var(--line);background:white;border-radius:30px;font-size:11px;font-weight:650;color:var(--muted);padding:6px 12px;letter-spacing:.4px}.pill:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#3f9575;margin-right:7px}.hero{padding:38px 0 31px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:760;color:var(--green);margin:0 0 8px}h1{font-size:35px;line-height:1.18;letter-spacing:-1.35px;margin:0 0 12px;font-weight:720}.hero p{margin:0;color:var(--muted);max-width:700px;font-size:14px}.source{white-space:nowrap;color:var(--muted);font-size:12px}.workspace{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}.sidebar{position:sticky;top:24px}.panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:23px}.panel h2{font-size:14px;margin:0 0 5px;letter-spacing:-.2px}.panel-sub{font-size:12px;color:var(--muted);margin:0 0 21px}.metric{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eef2f2;font-size:12px}.metric:last-child{border-bottom:0}.metric strong{font-size:14px;font-variant-numeric:tabular-nums}.category{text-transform:capitalize;overflow-wrap:anywhere}.privacy-foot{font-size:11px;color:var(--muted);border-top:1px solid var(--line);margin:15px 0 0;padding-top:16px}.note{font-size:12px;color:#5c7067;padding:18px 5px}.note strong{display:block;margin-bottom:4px;color:var(--ink)}.review-notice{border-left:3px solid #9cbeb1;padding:12px 16px;background:#eaf3ef;border-radius:0 10px 10px 0;margin-bottom:19px;color:#3c5a4e;font-size:12px}.warning-list{padding:0;margin:8px 0 0 16px}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.filters{display:flex;gap:4px;flex-wrap:wrap}.filter{border-color:transparent;background:transparent;padding:7px 12px;font-size:12px;color:var(--muted)}.filter[aria-pressed="true"]{background:#e0eee9;color:var(--green);border-color:#c0d9ce}.search{border:1px solid var(--line);background:white;border-radius:9px;padding:8px 11px;font-size:12px;min-width:170px;width:210px;color:var(--ink)}.selection-bar{display:flex;justify-content:space-between;align-items:center;margin:0 0 17px;font-size:11px;color:var(--muted);gap:12px}.text-button{padding:2px 0;background:transparent;border:0;color:var(--green);font-size:11px;min-height:28px}.selection-actions{display:flex;gap:18px}.timeline{display:grid;gap:14px}.event{border:1px solid var(--line);border-radius:var(--radius);background:white;overflow:hidden;transition:border-color .12s,box-shadow .12s}.event.selected{border-color:#86b9a5;box-shadow:0 0 0 1px #86b9a5}.event-head{display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:1px solid #eef2f2;background:#fdfefe}.event-check{width:16px;height:16px;accent-color:var(--green);margin:0;flex:none;cursor:pointer}.kind{font-size:10px;letter-spacing:.8px;text-transform:uppercase;font-weight:760;border-radius:5px;padding:3px 7px;background:#edf1f4;color:#546573}.kind.assistant{background:#e4f2eb;color:var(--green)}.kind.tool{background:#f0eaf7;color:#735d91}.label{font-size:12px;line-height:1.4;font-weight:650;overflow-wrap:anywhere;flex:1}.status{color:var(--red);background:#faeded;border-radius:5px;padding:2px 6px;font-size:10px;font-weight:700}.time{font-size:10px;color:var(--muted);white-space:nowrap}.edit-toggle{font-size:11px;padding:4px 9px;min-height:28px;font-weight:600}.event-body{padding:18px 20px 20px}.event-text{font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;max-height:480px;overflow:auto;color:#36494e}.editor{display:block;resize:vertical;width:100%;min-height:150px;border:1px solid #bbd4c9;background:#fafffc;border-radius:7px;padding:12px;color:#314b40;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}.edit-help{font-size:10px;color:var(--muted);margin:8px 0 0}.edited{font-size:10px;color:var(--green)}.empty{padding:58px 20px;text-align:center;border:1px dashed #c8d9d2;border-radius:var(--radius);color:var(--muted);font-size:13px}.empty strong{display:block;font-size:16px;color:var(--ink);margin-bottom:7px}.export-bar{position:sticky;bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:18px;background:#1f3431;color:white;border-radius:12px;padding:17px 20px;margin-top:23px;box-shadow:0 7px 24px #1c35311f}.export-count{font-size:12px;font-weight:650}.export-detail{font-size:10px;color:#b4cec4;margin-top:2px}.export-actions{display:flex;gap:8px}.export-bar button{font-size:11px;background:transparent;border-color:#56766b;color:#e0eee8;padding:9px 12px}.export-bar button.primary{background:#d6f2e5;border-color:#d6f2e5;color:#173e2d}.export-bar button:hover:enabled{background:#37554b}.export-bar button.primary:hover:enabled{background:#bfe6d3}.footer{font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;padding-top:28px}.hidden{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.warning-details{margin-top:8px}.warning-details summary{cursor:pointer;font-size:11px;font-weight:650;color:var(--green);width:fit-content}.warning-details summary:focus-visible{outline:3px solid #7ac7b0;outline-offset:3px;border-radius:3px}.warning-details .warning-list{font-size:11px;margin-top:10px}.warning-details .warning-list li+li{margin-top:5px}
+@media(max-width:900px){.page{padding:0 22px 28px}.workspace{grid-template-columns:220px minmax(0,1fr);gap:18px}.hero{display:block}.source{margin-top:16px}.toolbar{align-items:stretch;flex-direction:column}.search{width:100%}.event-head{padding:13px}.event-body{padding:15px}.export-bar{flex-direction:column;align-items:flex-start}.export-actions{width:100%}.export-actions button{flex:1}.time{display:none}}
+@media(max-width:650px){.page{padding:0 16px 25px}.topbar{height:70px}.brand{font-size:21px}.pill{font-size:9px;padding:5px 9px}.hero{padding:28px 0 24px}h1{font-size:30px}.workspace{grid-template-columns:1fr}.sidebar{position:static}.panel{padding:18px}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.note{display:none}.event-head{gap:8px}.kind{font-size:9px}.label{font-size:11px}.selection-actions{gap:13px}.export-bar{bottom:10px;margin-top:17px}.footer{display:block}.filter{padding:7px 10px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true">↗</span>AgentShare</div><span class="pill">LOCAL · OFFLINE · NO UPLOAD</span></header>
+  <section class="hero"><div><div class="eyebrow">Transcript review workspace</div><h1>Review locally.<br>Share deliberately.</h1><p>Choose the messages that matter, edit remaining identifiers, and export just your selection.</p></div><div class="source" id="source-summary"></div></section>
+  <div class="workspace">
+    <aside class="sidebar">
+      <section class="panel"><h2>Privacy transforms</h2><p class="panel-sub">Applied before this page was built.</p><div class="metrics" id="metrics"></div><p class="privacy-foot">Counts describe automatic transformations. They do not certify that every sensitive detail was found.</p></section>
+      <div class="note"><strong>You control the handoff.</strong>Nothing is selected by default. Edits stay in this open page; save a selected export before closing.</div>
+    </aside>
+    <main>
+      <div class="review-notice"><strong>This file contains all review candidates.</strong> Keep it local; detection is incomplete. Inspect your selection before sharing.<details id="warning-details" class="warning-details hidden"><summary>What was removed and what may remain</summary><ul id="warnings" class="warning-list hidden"></ul></details></div>
+      <div class="toolbar"><div class="filters" role="group" aria-label="Filter messages"><button class="filter" data-filter="all" aria-pressed="true">All messages</button><button class="filter" data-filter="user" aria-pressed="false">User</button><button class="filter" data-filter="assistant" aria-pressed="false">Assistant</button><button class="filter" data-filter="tool" aria-pressed="false">Tools</button><button class="filter" data-filter="errors" aria-pressed="false">Errors</button></div><label><span class="sr-only">Search messages</span><input id="search" class="search" type="search" placeholder="Search reviewed text…" autocomplete="off"></label></div>
+      <div class="selection-bar"><span id="visible-count" aria-live="polite"></span><div class="selection-actions"><button class="text-button" id="select-visible">Select visible</button><button class="text-button" id="deselect-all">Deselect all</button></div></div>
+      <div class="timeline" id="timeline"></div>
+      <div class="empty hidden" id="empty"><strong>No messages in this view.</strong>Try another filter or a shorter search.</div>
+      <div class="export-bar"><div><div class="export-count" id="selection-count" aria-live="polite">0 messages selected</div><div class="export-detail">Exports include selected messages and your current edits only.</div></div><div class="export-actions"><button id="export-md" disabled>Download Markdown</button><button class="primary" id="export-html" disabled>Download HTML</button></div></div>
+      <span class="sr-only" id="download-status" role="status"></span>
+    </main>
+  </div>
+  <footer class="footer"><span>AgentShare · Review candidates locally, export a deliberate selection.</span><span>Plain text rendering. No network requests. No persistent storage.</span></footer>
+</div>
+<script id="review-data" type="application/json">__AGENTSHARE_BUNDLE_JSON__</script>
+<script>
+'use strict';
+/* BEGIN EXPORT HELPERS */
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+}
+function selectEditedEvents(events, edits, selectedIds) {
+  return events.filter(event => selectedIds.has(event.id)).map(event => ({
+    kind: event.kind, label: event.label, text: edits.has(event.id) ? edits.get(event.id) : event.text,
+    status: event.status, time: event.time
+  }));
+}
+function buildSelectedHtml(events) {
+  const cards = events.map((event, index) => `<article><div class="meta"><span class="kind">${escapeHtml(event.kind)}</span><span>${escapeHtml(event.label || `Message ${index + 1}`)}</span>${event.status === 'error' ? '<b class="error">ERROR</b>' : ''}<small>${escapeHtml(event.time)}</small></div><pre>${escapeHtml(event.text)}</pre></article>`).join('\n');
+  return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>AgentShare · selected transcript</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f4f7f7;color:#1c2c36;font:14px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.page{max-width:900px;margin:0 auto;padding:36px 22px}header{border-bottom:1px solid #dce5e5;padding-bottom:24px;margin-bottom:24px}.brand{color:#14674f;font-size:12px;font-weight:750;letter-spacing:1px}h1{font-size:30px;line-height:1.3;letter-spacing:-1px;margin:8px 0 10px}.notice{font-size:12px;color:#61727a;max-width:670px}article{margin:16px 0;border:1px solid #dce5e5;border-radius:12px;overflow:hidden;background:white}.meta{display:flex;gap:12px;align-items:center;padding:14px 18px;border-bottom:1px solid #edf1f1;font-size:12px;overflow-wrap:anywhere}.kind{font-size:10px;font-weight:700;text-transform:uppercase;color:#14674f;background:#e4f2eb;border-radius:5px;padding:3px 7px}.meta small{margin-left:auto;color:#61727a}.error{color:#a43c3c;font-size:10px}pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}footer{color:#61727a;font-size:11px;margin-top:25px}@media print{body{background:white}.page{padding:0}article{break-inside:avoid}}@media(max-width:500px){.meta{flex-wrap:wrap}.meta small{margin-left:0}}
+</style></head><body><div class="page"><header><div class="brand">AGENTSHARE / SELECTED TRANSCRIPT</div><h1>A deliberate selection.</h1><div class="notice">${events.length} message${events.length === 1 ? '' : 's'} selected and edited locally. Automatic detection is incomplete; the person sharing this transcript must inspect it for remaining sensitive details.</div></header>${cards || '<p>No messages selected.</p>'}<footer>Only selected messages are included. Plain text · no scripts · no external assets.</footer></div></body></html>`;
+}
+function buildSelectedMarkdown(events) {
+  const parts = ['# AgentShare · selected transcript', '', `${events.length} message${events.length === 1 ? '' : 's'} selected and edited locally. Automatic detection is incomplete; inspect remaining sensitive details before sharing.`, ''];
+  events.forEach((event, index) => {
+    const label = String(event.label || `Message ${index + 1}`).replace(/[\r\n]/g, ' ');
+    const labelRuns = label.match(/`+/g) || [];
+    const labelFence = '`'.repeat(labelRuns.reduce((longest, run) => Math.max(longest, run.length + 1), 1));
+    const runs = String(event.text).match(/`+/g) || [];
+    const fence = '`'.repeat(runs.reduce((longest, run) => Math.max(longest, run.length + 1), 3));
+    const kind = ['user', 'assistant', 'tool'].includes(event.kind) ? event.kind : 'message';
+    parts.push(`## ${index + 1}. ${kind}${event.status === 'error' ? ' · ERROR' : ''}`, '', `Label: ${labelFence} ${label} ${labelFence}`, '', `${fence}text`, String(event.text), fence, '');
+  });
+  return parts.join('\n');
+}
+/* END EXPORT HELPERS */
+const bundle = JSON.parse(document.getElementById('review-data').textContent);
+const events = bundle.events;
+const edits = new Map();
+const selected = new Set();
+const cards = new Map();
+let activeFilter = 'all';
+let query = '';
+const timeline = document.getElementById('timeline');
+function node(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+function currentText(event) { return edits.has(event.id) ? edits.get(event.id) : event.text; }
+function isVisible(event) {
+  const kindMatch = activeFilter === 'all' || (activeFilter === 'errors' ? event.status === 'error' : event.kind === activeFilter);
+  return kindMatch && `${event.kind} ${event.label} ${currentText(event)}`.toLocaleLowerCase().includes(query);
+}
+function updateSelection() {
+  const hiddenCount = events.filter(event => selected.has(event.id) && !isVisible(event)).length;
+  document.getElementById('selection-count').textContent = `${selected.size} message${selected.size === 1 ? '' : 's'} selected${hiddenCount ? ` · ${hiddenCount} outside this view` : ''}`;
+  document.getElementById('export-md').disabled = selected.size === 0;
+  document.getElementById('export-html').disabled = selected.size === 0;
+  document.getElementById('deselect-all').disabled = selected.size === 0;
+  events.forEach(event => {
+    const card = cards.get(event.id);
+    card.element.classList.toggle('selected', selected.has(event.id));
+    card.checkbox.checked = selected.has(event.id);
+  });
+}
+function updateView() {
+  let visible = 0;
+  events.forEach(event => {
+    const shown = isVisible(event);
+    cards.get(event.id).element.classList.toggle('hidden', !shown);
+    if (shown) visible += 1;
+  });
+  document.getElementById('visible-count').textContent = `${visible} of ${events.length} messages shown`;
+  document.getElementById('empty').classList.toggle('hidden', visible !== 0);
+  if (!events.length) {
+    document.getElementById('empty').replaceChildren(node('strong', '', 'No reviewable messages.'), document.createTextNode('The parser found no supported messages. Check the CLI summary and source format.'));
+  }
+  document.getElementById('select-visible').disabled = visible === 0;
+  updateSelection();
+}
+events.forEach((event, index) => {
+  const article = node('article', 'event');
+  const header = node('div', 'event-head');
+  const checkbox = node('input', 'event-check');
+  checkbox.type = 'checkbox';
+  checkbox.setAttribute('aria-label', `Select ${event.kind} message ${index + 1}`);
+  checkbox.addEventListener('change', () => { checkbox.checked ? selected.add(event.id) : selected.delete(event.id); updateSelection(); });
+  const role = node('span', `kind ${event.kind}`, event.kind);
+  const label = node('span', 'label', event.label || `Message ${index + 1}`);
+  header.append(checkbox, role, label);
+  if (event.status === 'error') header.append(node('span', 'status', 'ERROR'));
+  const edited = node('span', 'edited hidden', 'Edited');
+  header.append(edited);
+  if (event.time) header.append(node('span', 'time', event.time));
+  const toggle = node('button', 'edit-toggle', 'Edit');
+  toggle.setAttribute('aria-label', `Edit message ${index + 1}`);
+  toggle.setAttribute('aria-expanded', 'false');
+  const body = node('div', 'event-body');
+  const text = node('pre', 'event-text', event.text || '(Empty message)');
+  const textarea = node('textarea', 'editor hidden');
+  textarea.value = event.text;
+  textarea.setAttribute('aria-label', `Reviewed text for message ${index + 1}`);
+  textarea.spellcheck = false;
+  const help = node('p', 'edit-help hidden', 'Edits apply immediately to exports. Remove remaining identifiers or irrelevant details.');
+  textarea.addEventListener('input', () => {
+    edits.set(event.id, textarea.value);
+    text.textContent = textarea.value || '(Empty message)';
+    edited.classList.toggle('hidden', textarea.value === event.text);
+    updateView();
+  });
+  toggle.addEventListener('click', () => {
+    const opening = textarea.classList.contains('hidden');
+    textarea.classList.toggle('hidden', !opening);
+    help.classList.toggle('hidden', !opening);
+    text.classList.toggle('hidden', opening);
+    toggle.textContent = opening ? 'Done' : 'Edit';
+    toggle.setAttribute('aria-expanded', String(opening));
+    if (opening) textarea.focus();
+  });
+  header.append(toggle); body.append(text, textarea, help); article.append(header, body);
+  cards.set(event.id, {element:article, checkbox}); timeline.append(article);
+});
+const metrics = document.getElementById('metrics');
+function metric(label, count) { const row = node('div', 'metric'); row.append(node('span', 'category', label.replaceAll('_',' ')), node('strong', '', String(count))); metrics.append(row); }
+const categories = Object.entries(bundle.stats.redactions || {});
+const totalRedactions = categories.reduce((sum, [,value]) => sum + value, 0);
+metric('Values redacted', totalRedactions);
+categories.filter(([, value]) => value > 0).forEach(([key, value]) => metric(key, value));
+metric('Tool bodies omitted', bundle.stats.omitted_tool_bodies || 0);
+metric('Unsupported records', bundle.stats.unsupported_records || 0);
+document.getElementById('source-summary').textContent = `${bundle.source_format === 'claude' ? 'Claude Code' : bundle.source_format === 'codex' ? 'Codex' : 'Transcript'} · ${events.length} candidates`;
+const warnings = document.getElementById('warnings');
+(bundle.warnings || []).forEach(warning => warnings.append(node('li', '', warning)));
+warnings.classList.toggle('hidden', !warnings.children.length);
+document.getElementById('warning-details').classList.toggle('hidden', !warnings.children.length);
+document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+  activeFilter = button.dataset.filter;
+  document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  updateView();
+}));
+document.getElementById('search').addEventListener('input', event => { query = event.target.value.toLocaleLowerCase(); updateView(); });
+document.getElementById('select-visible').addEventListener('click', () => { events.filter(isVisible).forEach(event => selected.add(event.id)); updateSelection(); });
+document.getElementById('deselect-all').addEventListener('click', () => { selected.clear(); updateSelection(); });
+function download(content, filename, mime) {
+  const url = URL.createObjectURL(new Blob([content], {type:mime}));
+  const link = document.createElement('a');
+  link.href = url; link.download = filename; document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  document.getElementById('download-status').textContent = `Downloaded ${filename} with ${selected.size} selected messages.`;
+}
+document.getElementById('export-md').addEventListener('click', () => download(buildSelectedMarkdown(selectEditedEvents(events, edits, selected)), 'agentshare-selected.md', 'text/markdown;charset=utf-8'));
+document.getElementById('export-html').addEventListener('click', () => download(buildSelectedHtml(selectEditedEvents(events, edits, selected)), 'agentshare-selected.html', 'text/html;charset=utf-8'));
+updateSelection(); updateView();
+</script>
+</body>
+</html>

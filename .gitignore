@@ -8,7 +8,7 @@ dist/
 .env.*
 *.jsonl
 !examples/demo-*.jsonl
-review.html
+/review.html
 *-review.html
 !examples/demo-review.html
 private/
