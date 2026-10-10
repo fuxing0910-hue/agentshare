@@ -10,12 +10,17 @@ For a complete task example and runnable install path, see [the bilingual transc
 
 | Environment | Entry point | What must happen first |
 | --- | --- | --- |
+| Person reviewing a local transcript | [Zero-install browser tool](https://fuxing0910-hue.github.io/agentshare/try.html) | Choose the JSONL file; manually review and select messages before export. |
 | Coding agent supporting Agent Skills | `share-ai-transcripts` skill | Install the skill into that agent's configured skill location. |
 | Agent with a shell or Python runtime | Existing CLI or Python API | Install the package, or use a repository checkout. |
 | GPT, DeepSeek, Claude or Gemini API application | Function declarations + local dispatcher | The application registers the declarations and executes requested calls. |
 | Ordinary chat page | Its supported integrations | The host application must expose a suitable tool. A GitHub URL alone does not add one. |
 
 模型和应用是两层：DeepSeek 模型也可以运行在支持 Skill 的编程代理里；普通聊天页面是否能调用文件工具，取决于该应用开放的接入方式。
+
+The browser tool is a manual local-file entry point, not a tool automatically registered with a model. It starts with zero messages selected and accepts up to 20 MiB UTF-8 JSONL, 100,000 Unicode code points per visible message, and 5,000 candidates. Use the Python CLI for more candidates. Pattern replacements still require manual review.
+
+浏览器入口无需安装、不上传文件，适合人工审阅；它不会自动注册成聊天模型的工具。初始选择 0 条消息，更多候选可使用下方 Python 流程，分享前仍需人工检查。
 
 ## Install the portable skill
 

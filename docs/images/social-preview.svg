@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc"><title id="title">AgentShare — share the useful part of an AI coding session</title><desc id="desc">Local Claude Code and Codex JSONL review: redact common patterns, edit and select messages, export HTML or Markdown. The illustrated content is synthetic.</desc>
+<rect x="0" y="0" width="1280" height="640" rx="0" fill="#f5f8f7"/>
+<rect x="64" y="58" width="44" height="44" rx="12" fill="#ddf3e8" stroke="#b5d7c5" stroke-width="1"/>
+<text x="73" y="88" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#185a43">AS</text>
+<text x="123" y="91" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#20352f">AgentShare</text>
+<text x="994" y="87" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#60746a">FU XING / OPEN SOURCE</text>
+<line x1="64" y1="576" x2="1216" y2="576" stroke="#d7e4de" stroke-width="1"/>
+<text x="64" y="610" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="400" fill="#185a43">github.com/fuxing0910-hue/agentshare</text>
+<text x="1062" y="610" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#60746a">PYTHON 3.10+</text>
+<text x="64" y="198" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" fill="#20352f">Share the useful</text>
+<text x="64" y="257" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" fill="#20352f">part of an AI</text>
+<text x="64" y="316" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" fill="#185a43">coding session.</text>
+<text x="66" y="359" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="400" fill="#60746a">Claude Code + Codex JSONL → local review</text>
+<rect x="64" y="405" width="148" height="36" rx="8" fill="#e5f2eb"/>
+<text x="78" y="429" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#185a43">LOCAL REVIEW</text>
+<rect x="222" y="405" width="143" height="36" rx="8" fill="#e5f2eb"/>
+<text x="236" y="429" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#185a43">EDIT + SELECT</text>
+<rect x="64" y="451" width="292" height="36" rx="8" fill="#e5f2eb"/>
+<text x="78" y="475" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#185a43">COMMON-PATTERN REDACTION</text>
+<rect x="64" y="497" width="199" height="36" rx="8" fill="#e5f2eb"/>
+<text x="78" y="521" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#185a43">HTML / MARKDOWN</text>
+<rect x="677" y="163" width="539" height="357" rx="18" fill="#eaf2ed" stroke="#bdd5c8" stroke-width="1"/>
+<rect x="678" y="164" width="537" height="53" rx="17" fill="#ffffff"/>
+<rect x="678" y="196" width="537" height="21" rx="0" fill="#ffffff"/>
+<line x1="678" y1="217" x2="1215" y2="217" stroke="#d7e4de" stroke-width="1"/>
+<text x="699" y="196" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#185a43">EDIT · SELECT · EXPORT</text>
+<text x="1107" y="196" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#60746a">EXAMPLE</text>
+<rect x="699" y="238" width="494" height="109" rx="11" fill="#ffffff" stroke="#94bba5" stroke-width="2"/>
+<rect x="716" y="254" width="21" height="21" rx="5" fill="#185a43" stroke="#185a43" stroke-width="1"/>
+<line x1="721" y1="265" x2="725" y2="269" stroke="#ffffff" stroke-width="2"/>
+<line x1="725" y1="269" x2="732" y2="260" stroke="#ffffff" stroke-width="2"/>
+<text x="749" y="272" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#60746a">USER</text>
+<text x="716" y="308" font-family="Consolas, monospace" font-size="23" font-weight="400" fill="#185a43">API_TOKEN=[redacted]</text>
+<text x="716" y="332" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#60746a">Review replacements before sharing.</text>
+<rect x="699" y="360" width="494" height="69" rx="11" fill="#ffffff" stroke="#d3e1d9" stroke-width="1"/>
+<rect x="716" y="377" width="21" height="21" rx="5" fill="#ffffff" stroke="#b8cdc1" stroke-width="1"/>
+<text x="749" y="394" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#60746a">ASSISTANT</text>
+<text x="749" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#60746a">Unselected context stays out of the export.</text>
+<rect x="699" y="451" width="247" height="44" rx="8" fill="#185a43"/>
+<text x="717" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Export selected messages</text>
+<text x="965" y="479" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#185a43">HTML / Markdown</text>
+</svg>

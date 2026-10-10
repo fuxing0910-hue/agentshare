@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src 'self' about:; worker-src blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Review your Claude Code or Codex transcript — AgentShare browser tool</title>
+<meta name="description" content="Open a Claude Code or Codex JSONL transcript in your browser. Redact common secrets, review and edit messages, then download selected HTML or Markdown. No upload or installation.">
+<link rel="canonical" href="https://fuxing0910-hue.github.io/agentshare/try.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AgentShare">
+<meta property="og:title" content="Review your coding transcript — no installation">
+<meta property="og:description" content="Open a Claude Code or Codex JSONL file locally in your browser. Edit and select useful messages, then download HTML or Markdown. No upload.">
+<meta property="og:url" content="https://fuxing0910-hue.github.io/agentshare/try.html">
+<meta property="og:image" content="https://fuxing0910-hue.github.io/agentshare/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AgentShare: review locally, select useful messages, share deliberately">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Review your coding transcript — no installation">
+<meta name="twitter:description" content="Try AgentShare with your own Claude Code or Codex JSONL file. Local processing, editable review, selected HTML or Markdown exports.">
+<meta name="twitter:image" content="https://fuxing0910-hue.github.io/agentshare/social-preview.png">
+<meta name="theme-color" content="#f5f8f7">
+<style>
+:root{color-scheme:light;--ink:#20352f;--muted:#60746a;--green:#185a43;--mint:#ddf3e8;--line:#d7e4de;--canvas:#f5f8f7}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--green);text-underline-offset:4px}button,input,select,textarea{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #72b79b;outline-offset:4px}.shell{max-width:1176px;padding:0 36px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;height:91px;border-bottom:1px solid var(--line);gap:25px}.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:750;letter-spacing:-.8px;text-decoration:none}.mark{height:30px;width:30px;background:var(--mint);border:1px solid #aed4c2;border-radius:9px;display:grid;place-items:center}nav{display:flex;gap:22px;font-size:12px}nav a{text-decoration:none}.hero{padding:51px 0 33px;max-width:780px}.eyebrow{text-transform:uppercase;color:var(--green);letter-spacing:1.5px;font-size:10px;font-weight:750;margin:0 0 15px}h1{font-size:43px;line-height:1.16;letter-spacing:-1.5px;margin:0 0 19px}.intro{font-size:16px;color:var(--muted);max-width:650px;margin:0}.privacy{display:inline-block;color:var(--green);background:#e8f3ed;border:1px solid #c7dfd1;border-radius:7px;padding:8px 12px;margin:17px 0 0;font-size:12px;font-weight:650}.setup{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,1fr);gap:27px;margin-bottom:31px}.panel{border:1px solid var(--line);border-radius:12px;background:#fff;padding:26px}.step{font-size:11px;font-weight:750;letter-spacing:.8px;color:var(--green);text-transform:uppercase;margin:0 0 17px}.fields{display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:15px}label{display:block;font-size:12px;font-weight:700;color:#365245}.hint{display:block;font-size:11px;font-weight:400;color:var(--muted);margin:5px 0 8px}input[type=file]{font-size:11px;width:100%;border:1px solid var(--line);background:#f8faf9;padding:10px;border-radius:7px;color:var(--muted)}input[type=file]::file-selector-button{font:600 11px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--mint);color:var(--green);border:0;padding:7px 10px;border-radius:4px;margin-right:10px;cursor:pointer}select{border:1px solid var(--line);padding:10px;background:#f8faf9;border-radius:7px;font-size:12px;width:100%;min-height:46px}textarea{display:block;width:100%;min-height:81px;padding:10px 12px;border:1px solid var(--line);border-radius:7px;font:12px/1.7 ui-monospace,Consolas,monospace;resize:vertical;background:#f8faf9}.terms{margin-top:19px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:19px}button,.button{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 14px;color:var(--ink);font-size:12px;font-weight:650;text-decoration:none;min-height:42px}button:hover:enabled,.button:hover{background:#eaf2ed;border-color:#b1cebd}.primary{background:var(--green);border-color:var(--green);color:#fff}.primary:hover:enabled{background:#104731}button:disabled{opacity:.5;cursor:default}.panel h2{font-size:17px;line-height:1.3;letter-spacing:-.3px;margin:0 0 12px}.panel p,.panel li{font-size:12px;color:var(--muted)}.panel p{margin:9px 0}.panel ol{margin:0;padding-left:19px}.panel li+li{margin-top:8px}.local-note{border-top:1px solid var(--line);padding-top:12px;margin-top:16px!important}.status{font-size:12px;padding:12px 15px;background:#e8f3ed;color:#245d42;border:1px solid #c7dfd1;border-radius:8px;margin:0 0 16px;overflow-wrap:anywhere}.status.error{background:#fff1ef;color:#9e3c31;border-color:#ebc9c5}.status:empty{display:none}.review{margin-bottom:33px;border:1px solid #c7dbd0;border-radius:12px;background:#fff;overflow:hidden}.review-head{padding:13px 17px;border-bottom:1px solid var(--line);font-size:11px;display:flex;gap:20px;justify-content:space-between;align-items:center;color:var(--muted)}.review-head strong{color:var(--green)}iframe{display:block;width:100%;height:1000px;border:0;background:#f4f7f7}.hidden{display:none!important}.limits{padding:19px 22px;background:#edf3ef;border-left:3px solid #a0c3ad;border-radius:0 8px 8px 0;color:var(--muted);font-size:11px;line-height:1.8;margin-bottom:33px}.limits strong{color:#30563b}footer{border-top:1px solid var(--line);padding:25px 0 30px;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:25px}.next-step{display:flex;gap:13px;flex-wrap:wrap;align-items:center;font-size:12px;margin:0 0 27px}.next-step strong{color:#365245}.skip{position:absolute;left:20px;top:-80px;background:#fff;padding:10px 15px;z-index:20}.skip:focus{top:12px}@media(max-width:760px){.shell{padding:0 19px}header{height:75px}nav{gap:13px;font-size:11px}.hero{padding-top:35px}h1{font-size:35px}.intro{font-size:14px}.setup{grid-template-columns:1fr;gap:15px}.panel{padding:20px}.fields{grid-template-columns:1fr 125px;gap:11px}iframe{height:1300px}.review-head{align-items:flex-start;flex-direction:column;gap:3px}footer{display:block}footer span{display:block;margin-bottom:5px}}@media(max-width:400px){.fields{grid-template-columns:1fr}.brand{font-size:20px}nav a:first-child{display:none}h1{font-size:31px}.actions{gap:7px}button,.button{padding:10px 12px;font-size:11px}}
+.file-help{margin-top:14px;font-size:12px;color:var(--muted)}.file-help summary{color:var(--green);cursor:pointer;font-weight:650}.file-help p{margin:9px 0}.file-help code{font:11px/1.7 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+<header><a class="brand" href="./"><span class="mark" aria-hidden="true">↗</span>AgentShare</a><nav aria-label="Main navigation"><a href="zh.html">中文介绍</a><a href="https://github.com/fuxing0910-hue/agentshare">GitHub ↗</a></nav></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">Your transcript · no installation</p><h1>Share the useful messages.<br>Keep the rest with you.</h1><p class="intro">Choose a Claude Code or Codex JSONL file. Review automatic replacements, edit the text, and download only the messages you select.</p><p class="privacy">Your file stays in this browser. 浏览器内本地处理，分享前请检查。</p></section>
+<div class="setup">
+<form id="build-form" class="panel"><p class="step">01 / Open a local transcript</p><div class="fields"><label>Transcript file <span class="hint">UTF-8 JSONL · up to 20 MiB</span><input id="transcript" type="file" accept=".jsonl,.json,application/json" required></label><label>Source format <span class="hint">Usually automatic</span><select id="format"><option value="auto">Auto detect</option><option value="claude">Claude Code</option><option value="codex">Codex</option></select></label></div><details class="file-help"><summary>Where is my JSONL? / 在哪里找文件？</summary><p>Default CLI locations: <a href="https://code.claude.com/docs/en/sessions#where-transcripts-are-stored">Claude Code</a>: <code>~/.claude/projects/&lt;project&gt;/&lt;session-id&gt;.jsonl</code>; <a href="https://github.com/openai/codex/blob/main/codex-rs/rollout/src/recorder.rs">Codex</a>: <code>rollout-*.jsonl</code> under <code>~/.codex/sessions/</code>. <code>~</code> is your home folder.</p><p>Custom configuration or other clients may use a different location. Choose the session file yourself; this page does not search your folders.</p><p lang="zh-CN">以上为 CLI 默认路径，<code>~</code> 表示用户目录。自定义配置或其他客户端可能不同；请自行选择要审阅的会话文件，本页不会自动查找目录。</p></details><label class="terms">Private literal terms (optional)<span class="hint">One term per line, case-sensitive. Add company names or remaining identifiers.</span><textarea id="terms" placeholder="Example Company&#10;internal-project-name" spellcheck="false" autocomplete="off"></textarea></label><div class="actions"><button id="build" class="primary" type="submit">Create local review →</button><button id="demo" type="button">Try synthetic example</button><button id="clear-review" type="button">Clear &amp; reset</button></div></form>
+<aside class="panel"><p class="step">02 / Review before sharing</p><h2>You decide what leaves.</h2><ol><li>Tool bodies and session metadata are omitted. Common secret patterns and your literal terms are replaced.</li><li>Nothing is selected by default. Check replacements, edit remaining sensitive details, and select useful messages.</li><li>Download a selected HTML or Markdown file. The review workspace itself contains all candidates; keep it local.</li></ol><p class="local-note">No upload, account, API key, analytics, or browser storage. After the page loads, processing and exports need no connection.</p></aside>
+</div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div id="download-ready" class="status hidden" role="status"><span id="download-summary"></span> <a id="download-link" class="button">Save selected export</a></div>
+<section id="review" class="review hidden" aria-label="Local review workspace"><div class="review-head"><strong>Review candidates / 审阅候选消息</strong><span>Inspect every selected message · automatic redaction is incomplete</span></div><iframe id="workspace" title="AgentShare local transcript review" sandbox="allow-scripts allow-downloads" referrerpolicy="no-referrer"></iframe></section>
+<div class="next-step"><strong>Useful for your workflow?</strong><a class="button" href="https://github.com/fuxing0910-hue/agentshare">Star AgentShare on GitHub ↗</a><a href="https://github.com/fuxing0910-hue/agentshare#run-it-locally">Get the CLI &amp; reusable Skill</a></div>
+<div class="limits"><strong>Supported scope.</strong> Claude Code and Codex JSONL text/tool records only, not ChatGPT export ZIPs or arbitrary chat formats. Maximum 100,000 characters per visible message and 5,000 review candidates in this browser tool; use the Python CLI for larger reviews. Private terms: at most 1,000, each up to 4,096 characters. Unknown records, reasoning, images, absolute timestamps, and source filenames are omitted. Detection cannot find every secret. Close this tab or use Clear &amp; reset to discard the open review; a downloaded export remains on your disk.</div>
+</main>
+<footer><span>AgentShare · Local review, deliberate sharing · MIT</span><span><a href="https://github.com/fuxing0910-hue/agentshare">Inspect the source</a> · <button id="save-tool" type="button">Save tool for offline use</button></span></footer>
+</div>
+<script id="trial-assets" type="application/json">__BROWSER_ASSETS_JSON__</script>
+<script>
+'use strict';
+__DOWNLOAD_BRIDGE_JS__
+const assets = JSON.parse(document.getElementById('trial-assets').textContent);
+const form = document.getElementById('build-form'), fileInput = document.getElementById('transcript');
+const format = document.getElementById('format'), terms = document.getElementById('terms');
+const status = document.getElementById('status'), frame = document.getElementById('workspace');
+const review = document.getElementById('review'), build = document.getElementById('build');
+const downloadReady = document.getElementById('download-ready'), downloadLink = document.getElementById('download-link');
+let generation = 0, currentWorker = null, currentWorkerURL = null, downloadURL = null, downloadToken = null;
+function notify(message, error=false) { status.textContent = message; status.classList.toggle('error', error); }
+function stopWorker() { if (currentWorker) currentWorker.terminate(); if (currentWorkerURL) URL.revokeObjectURL(currentWorkerURL); currentWorker = null; currentWorkerURL = null; }
+function clearDownload() { if (downloadURL) URL.revokeObjectURL(downloadURL); downloadURL = null; downloadLink.removeAttribute('href'); downloadLink.removeAttribute('download'); downloadReady.classList.add('hidden'); document.getElementById('download-summary').textContent = ''; }
+function clearReview() { generation++; stopWorker(); clearDownload(); downloadToken = null; frame.removeAttribute('srcdoc'); frame.src = 'about:blank'; review.classList.add('hidden'); build.disabled = false; }
+function showReview(bundle) {
+  if (bundle.events.length > 5000) throw new Error('This browser tool supports at most 5,000 review candidates. Use the Python CLI for this transcript.');
+  const payload = JSON.stringify(bundle).replace(/[&<>\u2028\u2029]/gu, c => ({'&':'\\u0026','<':'\\u003c','>':'\\u003e','\u2028':'\\u2028','\u2029':'\\u2029'}[c]));
+  frame.removeAttribute('src');
+  downloadToken = [...crypto.getRandomValues(new Uint8Array(16))].map(value => value.toString(16).padStart(2,'0')).join('');
+  frame.srcdoc = assets.template.replace('__AGENTSHARE_DOWNLOAD_TOKEN__', () => downloadToken).replace('__AGENTSHARE_BUNDLE_JSON__', () => payload);
+  review.classList.remove('hidden');
+  const replacements = Object.values(bundle.stats.redactions).reduce((sum,count) => sum + count,0);
+  notify(`${bundle.events.length} candidates · ${bundle.stats.omitted_tool_bodies} tool bodies omitted · ${replacements} replacements · Initially 0 selected. Review and edit below before exporting.`);
+}
+window.addEventListener('message', event => {
+  const request = AgentShareDownloadBridge.validateRequest(event, frame.contentWindow, downloadToken);
+  if (!request) return;
+  clearDownload();
+  try {
+    downloadURL = URL.createObjectURL(new Blob([request.content], {type:request.mime}));
+    downloadLink.href = downloadURL; downloadLink.download = request.filename;
+    downloadLink.textContent = request.filename.endsWith('.md') ? 'Save selected Markdown' : 'Save selected HTML';
+    document.getElementById('download-summary').textContent = `${request.selected_count} selected message${request.selected_count === 1 ? '' : 's'} prepared. A download was requested; use this link if it did not start.`;
+    downloadReady.classList.remove('hidden');
+    downloadLink.click();
+    downloadReady.scrollIntoView({block:'nearest'});
+    downloadLink.focus({preventScroll:true});
+  } catch (_) { clearDownload(); notify('Could not prepare the selected download. Try a current browser or use the Python CLI.', true); }
+});
+document.getElementById('save-tool').addEventListener('click', () => {
+  const url = URL.createObjectURL(new Blob([AgentShareDownloadBridge.portableTool(assets)], {type:'text/html;charset=utf-8'}));
+  const link = document.createElement('a'); link.href = url; link.download = 'agentshare-browser.html'; document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  notify('Offline tool download requested. It contains the synthetic example only; your transcript, edits, and private terms are excluded.');
+});
+function parseFile(bytes, selectedFormat, privateTerms) {
+  const workerCode = assets.parser + '\nself.onmessage = event => { try { self.postMessage({bundle: AgentShareBrowser.buildBundle(new Uint8Array(event.data.bytes), event.data.format, event.data.terms)}); } catch (error) { self.postMessage({error:error.name === "AgentShareInputError" ? error.message : "Local processing failed. Try fewer private terms or use the Python CLI."}); } };';
+  const workerURL = URL.createObjectURL(new Blob([workerCode], {type:'text/javascript'}));
+  let worker;
+  try { worker = new Worker(workerURL); }
+  catch (_) { URL.revokeObjectURL(workerURL); throw new Error('Local processing could not start. Try a current browser, or use the Python CLI.'); }
+  currentWorker = worker;
+  currentWorkerURL = workerURL;
+  return new Promise((resolve,reject) => {
+    worker.onmessage = event => { if (currentWorker === worker) stopWorker(); event.data.error ? reject(new Error(event.data.error)) : resolve(event.data.bundle); };
+    worker.onerror = () => { if (currentWorker === worker) stopWorker(); reject(new Error('Local processing could not start. Try a current browser, or use the Python CLI.')); };
+    worker.postMessage({bytes,format:selectedFormat,terms:privateTerms}, [bytes]);
+  });
+}
+form.addEventListener('submit', async event => {
+  event.preventDefault(); clearReview();
+  const run = generation, file = fileInput.files[0];
+  if (!file) { notify('Choose a UTF-8 JSONL transcript file.', true); return; }
+  if (file.size > 20 * 1024 * 1024) { notify('Input exceeds the 20 MiB file limit.', true); return; }
+  const selectedFormat = format.value, privateTerms = terms.value.split(/\r\n|[\n\r]/u);
+  build.disabled = true; notify('Processing locally in browser memory…');
+  try {
+    const bytes = await file.arrayBuffer().catch(() => { throw new Error('Cannot read input file.'); });
+    if (run !== generation) return;
+    const bundle = await parseFile(bytes, selectedFormat, privateTerms);
+    if (run !== generation) return;
+    showReview(bundle);
+  } catch (error) { if (run === generation) notify(error instanceof Error ? error.message : 'Cannot process this transcript.', true); }
+  finally { if (run === generation) build.disabled = false; }
+});
+document.getElementById('demo').addEventListener('click', () => { clearReview(); showReview(assets.demo); notify(status.textContent + ' Synthetic example only; no file was opened.'); });
+document.getElementById('clear-review').addEventListener('click', () => { clearReview(); form.reset(); notify('Open review and file selection cleared. Downloaded exports are unchanged.'); });
+</script>
+</body>
+</html>

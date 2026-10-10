@@ -2,23 +2,25 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-**Share the useful part of an AI coding session. Review what leaves your machine.**
+**Redact, edit, and selectively export Claude Code / Codex sessions.**
 
 You want to show a teammate a failed test and the explanation that fixed it. Your Claude Code or Codex transcript also contains credentials, local paths, and a long tool output. AgentShare builds a local review page: edit the remaining text, select the relevant messages, then export a focused HTML or Markdown file.
 
-**[Try the interactive demo →](https://fuxing0910-hue.github.io/agentshare/demo.html)** · [Project site](https://fuxing0910-hue.github.io/agentshare/) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases)
+**[Open your JSONL in the browser →](https://fuxing0910-hue.github.io/agentshare/try.html)** · [View synthetic example](https://fuxing0910-hue.github.io/agentshare/demo.html) · [Project site](https://fuxing0910-hue.github.io/agentshare/) · [Releases](https://github.com/fuxing0910-hue/agentshare/releases) · [If useful, star on GitHub ☆](https://github.com/fuxing0910-hue/agentshare)
 
 [How to redact and selectively export a Claude Code/Codex transcript](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html) — offline JSONL review, editable messages, HTML/Markdown export, and agent installation.
 
-The demo is entirely synthetic. It opens the complete review interface, with nothing selected.
+No installation or upload: open your Claude Code or Codex JSONL in the browser, review the replacements, edit and select messages, then download HTML or Markdown. Nothing is selected initially. The secondary example uses invented data.
+
+Default CLI locations: [Claude Code](https://code.claude.com/docs/en/sessions#where-transcripts-are-stored) uses `~/.claude/projects/<project>/<session-id>.jsonl`; [Codex](https://github.com/openai/codex/blob/main/codex-rs/rollout/src/recorder.rs) uses `rollout-*.jsonl` under `~/.codex/sessions/`. `~` is your home folder. Custom configuration or other clients may differ; choose the session file yourself.
 
 - **Choose what to share.** Nothing is selected by default; exports contain only selected, edited messages.
 - **Reduce noisy context.** Tool arguments and output bodies are omitted; visible rules replace common credential, email, and home-path patterns.
-- **Keep processing local.** Python standard library, standalone review page, no model API or third-party runtime dependencies.
+- **Keep processing local.** Zero-install browser tool or Python standard-library CLI; no uploads, model API, or third-party runtime dependencies.
 
-**Review before sharing:** rules cannot find every secret. Keep the initial candidate review private and inspect your final selection.
+**Review before sharing:** rules cannot find every secret. Keep the candidate review private and inspect your final selection. Browser limits: 20 MiB UTF-8 JSONL, 100,000 Unicode code points per visible message, and 5,000 candidates; use the Python CLI for more candidates.
 
-![AgentShare review workspace: transformation counts, editable messages, and selected-only export](docs/images/demo-preview.jpg)
+[![AgentShare review workspace: transformation counts, editable messages, and selected-only export](docs/images/demo-preview.jpg)](https://fuxing0910-hue.github.io/agentshare/demo.html)
 
 ## Run it locally
 

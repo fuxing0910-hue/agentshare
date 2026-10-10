@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="task-guide.css">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Review and share a Claude Code transcript locally">
-  <meta property="og:description" content="A practical JSONL-to-HTML review workflow: replace common sensitive patterns, edit messages and export only the selection. Python 3.10+, no uploads.">
+  <meta property="og:description" content="A practical JSONL-to-HTML review workflow: replace common sensitive patterns, edit messages and export only the selection. Zero-install browser tool or Python CLI, no uploads.">
   <meta property="og:url" content="https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html">
   <meta name="theme-color" content="#f5f8f7">
   <script type="application/ld+json">
@@ -24,7 +24,7 @@
         "url": "https://fuxing0910-hue.github.io/agentshare/",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Windows, macOS, Linux",
-        "softwareRequirements": "Python 3.10 or later; a browser for local review and export",
+        "softwareRequirements": "Modern browser for zero-install local import; optional Python CLI 3.10 or later",
         "license": "https://github.com/fuxing0910-hue/agentshare/blob/main/LICENSE",
         "downloadUrl": "https://github.com/fuxing0910-hue/agentshare/releases",
         "description": "A local Claude Code and Codex JSONL transcript review tool. Replace common sensitive patterns, edit and select messages, then export selected content as standalone HTML or Markdown."
@@ -55,14 +55,15 @@
         <p class="eyebrow">Claude Code + Codex · JSONL transcript review</p>
         <h1>Review a Claude Code transcript.<br>Share the messages you choose.</h1>
         <p class="lede">Need to turn an AI coding conversation into a bug report, pull-request explanation or portfolio example? AgentShare creates a local HTML viewer for a specified JSONL file. Review sensitive-text replacements, edit messages and export a focused selection as HTML or Markdown.</p>
-        <div class="actions"><a class="button primary" href="demo.html">Try the synthetic review</a><a class="button" href="#quick-start">Use your local transcript</a></div>
-        <p class="meta">Python 3.10+ · MIT licensed · No model API, account or uploads · Browser review after processing</p>
+        <div class="actions"><a class="button primary" href="try.html">Open your transcript in the browser</a><a class="button" href="demo.html">View example</a><a class="button" href="#quick-start">Use the Python CLI</a></div>
+        <p class="meta">Zero-install browser tool · Optional Python CLI 3.10+ · MIT licensed · No model API, account or uploads</p>
       </section>
       <div class="facts">
         <article class="fact"><h2>View locally</h2><p>Read one explicit Claude Code or Codex JSONL file. Tool argument and output bodies are omitted; useful user and assistant text becomes reviewable.</p></article>
         <article class="fact"><h2>Edit and select</h2><p>Nothing is selected by default. Search the candidates, change their text and choose what to include in the exported document.</p></article>
         <article class="fact"><h2>Export a file</h2><p>The new standalone HTML or Markdown contains your selected, edited events. The browser export does not upload them.</p></article>
       </div>
+      <section class="section" id="browser-start"><h2>Open your own transcript without installing anything</h2><p>Use the <a href="try.html">browser tool</a> to choose a local UTF-8 JSONL file, select Claude Code, Codex or automatic detection, and optionally add private literal terms. Processing and exports stay in your browser. Inspect the replacements, edit remaining private details, select the messages to share, and download HTML or Markdown.</p><p>Nothing is selected initially. Browser limits are 20 MiB, 100,000 Unicode code points per visible message, and 5,000 review candidates. Use the Python CLI for more candidates. Automatic rules cannot find every secret; review the final export before sharing.</p></section>
       <section class="section" id="quick-start">
         <h2>Turn a local Claude Code JSONL file into a review page</h2>
         <p>Use an existing transcript you have explicitly chosen. These commands clone the source and run it without installing a Python package:</p>
@@ -97,7 +98,8 @@ python -m agentshare build session.jsonl --format claude --output review.html</c
       <section class="chinese" id="chinese" lang="zh-CN" aria-labelledby="chinese-title">
         <h2 id="chinese-title">如何把 Claude Code 会话脱敏、精选并导出？</h2>
         <p>如果你需要把 Claude Code 或 Codex 的 JSONL 会话用于问题反馈、PR 说明或求职项目展示，AgentShare 可以先生成本地审阅页面。常见敏感模式会被替换；你逐条检查、修改文字并选择消息，最终导出新的 HTML 或 Markdown。</p>
-        <h3>在本地运行</h3>
+        <h3>免安装浏览器工具</h3><p><a href="try.html">直接打开自己的 JSONL</a>，选择 Claude Code、Codex 或自动识别，可选添加私人词条。文件在浏览器本地处理，不上传；默认选中 0 条消息。检查替换、编辑并选择后，再导出 HTML 或 Markdown。</p><p>浏览器上限为 20 MiB、每条可见消息 100,000 个 Unicode 码点、5,000 条候选消息；更多候选请使用 Python CLI。自动规则无法识别所有秘密，分享前仍需人工检查。</p>
+        <h3>Python 本地流程</h3>
         <pre><code>git clone https://github.com/fuxing0910-hue/agentshare.git
 cd agentshare
 python -m agentshare build session.jsonl --format claude --output review.html</code></pre>
@@ -109,7 +111,7 @@ python -m agentshare build session.jsonl --format claude --output review.html</c
         <p>不要直接公开。初始页面含全部支持的候选消息，应留在本地；新导出文件才只包含选中且编辑后的内容。自动规则无法识别全部密钥、隐私或内部文字，分享前仍需人工检查。</p>
         <h3>支持哪些格式？</h3>
         <p>支持文档说明的 Claude Code 与 Codex JSONL 记录形状，未知记录会省略并计数；无效 JSONL 会终止生成。不处理任意 JSONL，不重放命令，也不自动搜索会话目录或上传文件。可用 <code>--term-file private-terms.txt</code> 追加自定义字面替换，每行一个，区分大小写。</p>
-        <p><a href="demo.html">打开合成数据演示</a> · <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/README.zh-CN.md">完整中文文档</a></p>
+        <p><a href="try.html">打开自己的会话</a> · <a href="demo.html">查看合成示例</a> · <a href="https://github.com/fuxing0910-hue/agentshare/blob/main/README.zh-CN.md">完整中文文档</a></p>
       </section>
     </main>
     <footer><span>AgentShare · Original implementation · MIT · Developed with AI assistance</span><div><a href="./">Project home</a><a href="demo.html">Synthetic demo</a><a href="https://github.com/fuxing0910-hue/agentshare/releases">Releases</a></div></footer>

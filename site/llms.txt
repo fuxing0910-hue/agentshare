@@ -4,7 +4,9 @@
 
 ## Documentation
 
-- [Project](https://fuxing0910-hue.github.io/agentshare/): English overview and runnable synthetic demo.
+- [Browser tool](https://fuxing0910-hue.github.io/agentshare/try.html): zero-install local import of Claude Code/Codex JSONL, manual review, editing, selected HTML/Markdown export. No upload; starts with zero selected. Up to 20 MiB, 100,000 Unicode code points per visible message, 5,000 candidates.
+- [Synthetic example](https://fuxing0910-hue.github.io/agentshare/demo.html): invented data for exploring the review interface.
+- [Project](https://fuxing0910-hue.github.io/agentshare/): English overview, browser tool and Python CLI.
 - [中文介绍](https://fuxing0910-hue.github.io/agentshare/zh.html): Chinese overview.
 - [Redact and export a Claude Code/Codex transcript](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html): bilingual task guide with offline review, edit/select, HTML/Markdown export and install commands.
 - [Agent integration](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/agents.md): portable Skill, CLI and local function dispatcher; OpenAI Responses, DeepSeek Chat Completions, Claude Messages, Gemini Interactions declaration formats.
@@ -12,4 +14,4 @@
 - [Technical reference](https://github.com/fuxing0910-hue/agentshare/blob/main/docs/reference.md): supported inputs, local processing and privacy limitations.
 - [Releases](https://github.com/fuxing0910-hue/agentshare/releases): versioned wheel and portable skill assets.
 
-This is a documentation index. Tool use requires an installed skill, local runtime or an API application that registers the function declarations. It does not register tools in public chat applications.
+This is a documentation index. People can use the browser tool without installation. Automated CLI/tool use requires an installed skill, local runtime or an API application that registers the function declarations. Neither this index nor the browser page registers tools in public chat applications. Pattern-based redaction cannot guarantee complete removal of secrets; manual review is required.

@@ -2,23 +2,25 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-**把 AI 编程会话里的有用片段整理成分享材料。先检查，再导出。**
+**Claude Code / Codex 会话：脱敏、编辑，只导出你选中的消息。**
 
 你想把一次失败测试和修复解释发给同事，但 Claude Code 或 Codex 会话里还夹着密钥、本地路径和大段工具输出。AgentShare 先生成本地审阅页，让你修改剩余文字、选择相关消息，再导出精简的 HTML 或 Markdown 文件。
 
-**[直接体验完整演示 →](https://fuxing0910-hue.github.io/agentshare/demo.html)** · [中文项目页](https://fuxing0910-hue.github.io/agentshare/zh.html) · [发布版本](https://github.com/fuxing0910-hue/agentshare/releases)
+**[在浏览器打开自己的 JSONL →](https://fuxing0910-hue.github.io/agentshare/try.html)** · [查看合成示例](https://fuxing0910-hue.github.io/agentshare/demo.html) · [中文项目页](https://fuxing0910-hue.github.io/agentshare/zh.html) · [发布版本](https://github.com/fuxing0910-hue/agentshare/releases) · [有用的话点个 Star ☆](https://github.com/fuxing0910-hue/agentshare)
 
 [Claude Code / Codex 会话如何本地脱敏、编辑并精选导出？](https://fuxing0910-hue.github.io/agentshare/claude-code-transcript-review.html) 包含可复现命令与 AI 工具安装入口。
 
-演示数据全部为虚构，打开后默认不选中任何消息。
+无需安装或上传：在浏览器打开 Claude Code 或 Codex JSONL，检查替换内容，编辑并选择消息，再下载 HTML 或 Markdown。初始状态不选中任何消息，示例入口使用虚构数据。
+
+默认 CLI 文件位置：[Claude Code](https://code.claude.com/docs/en/sessions#where-transcripts-are-stored) 为 `~/.claude/projects/<project>/<session-id>.jsonl`；[Codex](https://github.com/openai/codex/blob/main/codex-rs/rollout/src/recorder.rs) 的 `rollout-*.jsonl` 在 `~/.codex/sessions/` 下。`~` 表示你的用户目录。自定义配置或其他客户端可能不同，请自行选择要审阅的会话文件。
 
 - **你决定分享范围。** 初始状态不选中任何消息，导出文件只含选中并编辑后的内容。
 - **减少无关上下文。** 省略工具参数和完整输出，用可见规则替换常见凭据、邮箱及 home 路径。
-- **处理留在本地。** 使用 Python 标准库和独立审阅页面，无需模型 API 或第三方运行依赖。
+- **处理留在本地。** 可用免安装的浏览器工具，也可用 Python 标准库命令行；无需上传、模型 API 或第三方运行依赖。
 
-**分享前仍需检查：** 自动规则无法发现所有敏感内容。初始候选审阅页应留在私人位置，最终选择也需要人工检查。
+**分享前仍需检查：** 自动规则无法发现所有敏感内容。候选审阅页应留在私人位置，最终选择也需要人工检查。浏览器上限：UTF-8 JSONL 20 MiB、每条可见消息 100,000 个 Unicode 码点、5,000 条候选；更多候选请使用 Python CLI。
 
-![AgentShare 审阅工作台：替换统计、消息编辑以及仅导出选中内容](docs/images/demo-preview.jpg)
+[![AgentShare 审阅工作台：替换统计、消息编辑以及仅导出选中内容](docs/images/demo-preview.jpg)](https://fuxing0910-hue.github.io/agentshare/demo.html)
 
 ## 在本地运行
 
