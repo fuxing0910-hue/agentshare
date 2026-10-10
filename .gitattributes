@@ -1,0 +1,2 @@
+# Generated HTML and its source templates must be identical across checkouts.
+*.html text eol=lf
